@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private DBHelper DB;
     // define Regular expression to validate a email
     private String emailPattern = "^(.+)@(.+)$";
-    AlertDialog.Builder alert1 = new AlertDialog.Builder(this);
+    AlertDialog.Builder alert1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         contact = findViewById(R.id.contact);
         searchName = findViewById(R.id.searchName);
+        buttonInsert = findViewById(R.id.buttonInsert);
+        buttonView = findViewById(R.id.buttonView);
+
+        alert1 = new AlertDialog.Builder(this);
 
         DB = new DBHelper(this);
 
@@ -73,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                     //All fields are not filled
                     Toast.makeText(getApplicationContext(),"Please fill all fields",Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
@@ -82,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //check if name to be search is filled
                 if (!searchName.getText().toString().isEmpty()) {
 
